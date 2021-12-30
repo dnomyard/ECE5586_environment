@@ -1,0 +1,5 @@
+user1:saMNhdbYqwtng
+user2:$1$saltsalt$Uf4ZS8m0UI3KOJVGdW0Gg/
+user3:$5$saltsalt$LJ1xP2sWvlns2HXEEtjkvBBnDjVDRjIJY1i9wZOF6p5
+user4:$6$saltsalt$FxOz1/0OgdO5Rhbk9mNVswJYBtw9HwOmeHAOmn9Awl.Y3Z/A0PSLja52Fx31E11qxuKl.YnTn1o0z9b21Kt7K0
+
