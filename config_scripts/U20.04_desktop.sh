@@ -27,9 +27,9 @@ echo "******************************************************"
 echo "************       Installing snort              ********************"
 cd ~
 # wget https://www.snort.org/downloads/snort/snort-2.9.16.tar.gz
-wget https://www.snort.org/downloads/snort/snort-2.9.18.1.tar.gz
-tar xvzf snort-2.9.18.1.tar.gz
-cd snort-2.9.18.1
+wget https://www.snort.org/downloads/snort/snort-2.9.19.tar.gz
+tar xvzf snort-2.9.19.tar.gz
+cd snort-2.9.19
 ./configure --enable-sourcefire && make && sudo make install
 # ldconfig to update shared libs
 sudo ldconfig
@@ -59,28 +59,28 @@ sudo chown -R snort:snort /etc/snort
 sudo chown -R snort:snort /var/log/snort
 sudo chown -R snort:snort /usr/local/lib/snort_dynamicrules
 # copy snort configs to /etc/snort
-cd ~/snort-2.9.18.1/etc
+cd ~/snort-2.9.19/etc
 sudo cp *.conf* /etc/snort
 sudo cp *.map /etc/snort
 sudo cp *.dtd /etc/snort
-cd ~/snort-2.9.18.1/src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/
+cd ~/snort-2.9.19/src/dynamic-preprocessors/build/usr/local/lib/snort_dynamicpreprocessor/
 sudo cp -avr * /usr/local/lib/snort_dynamicpreprocessor/
 # install ruleset
-cd
+cd ~
 ## wget https://www.snort.org/downloads/community/community-rules.tar.gz -O community-rules.tar.gz
 ## sudo tar -xvzf community-rules.tar.gz -C /etc/snort/rules
 # download and install ruleset
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/snort/snortrules.tar.gz
-tar -zxf snortrules.tar.gz -C /etc/snort/rules
+sudo tar -zxf snortrules.tar.gz -C /etc/snort/rules
 # download and install snort.conf
-rm /etc/snort/snort.conf
-curl https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/snort/snort.conf -o /etc/snort/snort.conf
+sudo rm /etc/snort/snort.conf
+sudo curl https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/snort/snort.conf -o /etc/snort/snort.conf
 # Barnyard2
 echo "******************************************************"
 echo "************       Installing barnyard      ********************"
 # install prereqs
 sudo apt-get install -y mysql-server libmysqlclient-dev mysql-client autoconf libtool
-cd ~/snort-2.9.18.1
+cd ~/snort-2.9.19
 wget https://github.com/firnsy/barnyard2/archive/master.tar.gz -O barnyard2-Master.tar.gz
 tar zxvf barnyard2-Master.tar.gz
 cd barnyard2-master
@@ -99,7 +99,7 @@ sed -i "s/    my_bool mysql_reconnect; \/\* We will handle it via the api. \*\//
 make
 sudo make install
 #test: /usr/local/bin/barnyard2 -V
-sudo cp ~/snort-2.9.18.1/barnyard2-master/etc/barnyard2.conf /etc/snort/
+sudo cp ~/snort-2.9.19/barnyard2-master/etc/barnyard2.conf /etc/snort/
 sudo mkdir /var/log/barnyard2
 sudo chown snort:snort /var/log/barnyard2
 sudo touch /var/log/snort/barnyard2.waldo
@@ -110,7 +110,7 @@ sudo mysql -e "CREATE DATABASE snort;"
 # see https://medium.com/@crmcmullen/how-to-run-mysql-8-0-with-native-password-authentication-502de5bac661
 sudo mysql -e "CREATE USER snort@localhost IDENTIFIED WITH mysql_native_password BY 'Sn0rtD@t@B@seP@ssw0rd';"
 sudo mysql -e "GRANT ALL PRIVILEGES ON snort.* TO snort@localhost;"
-sudo mysql -u snort -pSn0rtD@t@B@seP@ssw0rd -D snort -e "SOURCE /home/student/snort-2.9.18.1/barnyard2-master/schemas/create_mysql;"
+sudo mysql -u snort -pSn0rtD@t@B@seP@ssw0rd -D snort -e "SOURCE /home/student/snort-2.9.19/barnyard2-master/schemas/create_mysql;"
 # see https://medium.com/@crmcmullen/how-to-run-mysql-8-0-with-native-password-authentication-502de5bac661
 echo -e "[mysqld]\ndefault-authentication-plugin=mysql_native_password" | sudo tee -a /etc/mysql/my.cnf
 echo "output database: log, mysql, user=snort password=Sn0rtD@t@B@seP@ssw0rd dbname=snort host=localhost sensor name=sensor01" | sudo tee -a /etc/snort/barnyard2.conf --pid-path=/var/run/snort
