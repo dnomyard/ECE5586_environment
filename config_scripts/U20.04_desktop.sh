@@ -71,7 +71,7 @@ cd ~
 ## sudo tar -xvzf community-rules.tar.gz -C /etc/snort/rules
 # download and install ruleset
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/snort/snortrules.tar.gz
-sudo tar -zxf snortrules.tar.gz -C /etc/snort/rules
+sudo tar -zxf snortrules.tar.gz -C /etc/snort/
 # download and install snort.conf
 sudo rm /etc/snort/snort.conf
 sudo curl https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/snort/snort.conf -o /etc/snort/snort.conf
@@ -113,7 +113,7 @@ sudo mysql -e "GRANT ALL PRIVILEGES ON snort.* TO snort@localhost;"
 sudo mysql -u snort -pSn0rtD@t@B@seP@ssw0rd -D snort -e "SOURCE /home/student/snort-2.9.19/barnyard2-master/schemas/create_mysql;"
 # see https://medium.com/@crmcmullen/how-to-run-mysql-8-0-with-native-password-authentication-502de5bac661
 echo -e "[mysqld]\ndefault-authentication-plugin=mysql_native_password" | sudo tee -a /etc/mysql/my.cnf
-echo "output database: log, mysql, user=snort password=Sn0rtD@t@B@seP@ssw0rd dbname=snort host=localhost sensor name=sensor01" | sudo tee -a /etc/snort/barnyard2.conf --pid-path=/var/run/snort
+echo "output database: log, mysql, user=snort password=Sn0rtD@t@B@seP@ssw0rd dbname=snort host=localhost sensor name=sensor01" | sudo tee -a /etc/snort/barnyard2.conf 
 sudo chmod o-r /etc/snort/barnyard2.conf
 # restart mysql to accept modified settings
 sudo service mysql restart
@@ -138,14 +138,14 @@ echo "   Description=Barnyard2 Daemon" | sudo tee -a /lib/systemd/system/barnyar
 echo "   After=syslog.target network.target" | sudo tee -a /lib/systemd/system/barnyard2.service
 echo "[Service]" | sudo tee -a /lib/systemd/system/barnyard2.service
 echo "   Type=simple" | sudo tee -a /lib/systemd/system/barnyard2.service
-echo "   User=snort" | sudo tee -a /lib/systemd/system/barnyard2.service
-echo "   Group=snort" | sudo tee -a /lib/systemd/system/barnyard2.service
+# echo "   User=snort" | sudo tee -a /lib/systemd/system/barnyard2.service
+# echo "   Group=snort" | sudo tee -a /lib/systemd/system/barnyard2.service
 # Next 3 lines are to fix error described here: https://disloops.com/fixing-the-barnyard2-pid-file-problem/
 echo "   PermissionsStartOnly=true" | sudo tee -a /lib/systemd/system/barnyard2.service
 echo "   ExecStartPre=-/bin/mkdir /var/run/snort" | sudo tee -a /lib/systemd/system/barnyard2.service
 echo "   ExecStartPre=/bin/chown -R snort:snort /var/run/snort/" | sudo tee -a /lib/systemd/system/barnyard2.service
 echo "   ExecStart=/usr/local/bin/barnyard2 -c /etc/snort/barnyard2.conf -d /var/log/snort -f snort.u2 -q -w /var/log/snort/barnyard2.waldo -g snort -D -a /var/log/snort/archived_logs --pid-path=/var/run/snort" | sudo tee -a /lib/systemd/system/barnyard2.service
-echo "[Injjkjstall]" | sudo tee -a /lib/systemd/system/barnyard2.service
+echo "[Install]" | sudo tee -a /lib/systemd/system/barnyard2.service
 echo "   WantedBy=multi-user.target" | sudo tee -a /lib/systemd/system/barnyard2.service
 # enable and start service
 sudo systemctl enable barnyard2
