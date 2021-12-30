@@ -185,7 +185,7 @@ cd ~
 #########################
 ## Need to add some cleanup here! #
 cd ~
-
+sudo rm *.gz
 
 
 # Install Bless hex editor (for crypto lab)
