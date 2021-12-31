@@ -183,13 +183,24 @@ sudo chown -R www-data:www-data /var/www/html/base
 sudo chmod o-r /var/www/html/base/base_conf.php
 sudo service apache2 restart
 cd ~
-
-#########################
-## Need to add some cleanup here! #
-cd ~
-sudo rm *.gz
-
-
 # Install Bless hex editor (for crypto lab)
 sudo apt -y install bless
+
+# Create folders and place artifacts
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab1/buffer_oflow.tar -P /home/student/lab_files/lab1/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab1/user_hashes.txt -P /home/student/lab_files/lab1/
+wget https://github.com/dnomyard/ECE5586_environment/blob/main/artifacts/lab_files/lab2/default_firewall.sh -P /home/student/lab_files/lab2
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/extingui.sh -P /home/student/lab_files/lab2/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/firewall.sh -P /home/student/lab_files/lab2/
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab3/shapes.bmp -P /home/student/lab_files/lab3/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/plain.txt -P /home/student/lab_files/lab3/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/test_message.txt -P /home/student/lab_files/lab3/
+
+#########################
+## minor cleanup        #
+cd ~
+sudo rm *.gz
+sudo rm *.sh
+
+
 
