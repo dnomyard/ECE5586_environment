@@ -115,6 +115,8 @@ sudo mysql -u snort -pSn0rtD@t@B@seP@ssw0rd -D snort -e "SOURCE /home/student/sn
 echo -e "[mysqld]\ndefault-authentication-plugin=mysql_native_password" | sudo tee -a /etc/mysql/my.cnf
 echo "output database: log, mysql, user=snort password=Sn0rtD@t@B@seP@ssw0rd dbname=snort host=localhost sensor name=sensor01" | sudo tee -a /etc/snort/barnyard2.conf 
 sudo chmod o-r /etc/snort/barnyard2.conf
+sudo chown snort /etc/snort/barnyard2.conf
+sudo chgrp snort /etc/snort/barnyard2.conf
 # restart mysql to accept modified settings
 sudo service mysql restart
 # test? sudo /usr/local/bin/snort -q -u snort -g snort -c /etc/snort/snort.conf -i eth0 -D
