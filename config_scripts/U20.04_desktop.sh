@@ -192,6 +192,7 @@ wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifac
 wget https://github.com/dnomyard/ECE5586_environment/blob/main/artifacts/lab_files/lab2/default_firewall.sh -P /home/student/lab_files/lab2
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/extingui.sh -P /home/student/lab_files/lab2/
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/firewall.sh -P /home/student/lab_files/lab2/
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/theft.pcap -P /home/student/lab_files/lab2/
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab3/shapes.bmp -P /home/student/lab_files/lab3/
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/plain.txt -P /home/student/lab_files/lab3/
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/test_message.txt -P /home/student/lab_files/lab3/
