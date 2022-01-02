@@ -183,6 +183,17 @@ sudo chown -R www-data:www-data /var/www/html/base
 sudo chmod o-r /var/www/html/base/base_conf.php
 sudo service apache2 restart
 cd ~
+# Software and config for password lab: John the Ripper
+sudo apt -y install john
+# Config for buffer overflow lab: disable ASLR; allow 32-bit program execution; install binutils (objdupm)
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+sudo touch /etc/sysctl.d/01-disable-aslr.conf
+echo "kernel.randomize_va_space = 0" | sudo tee -a /etc/sysctl.d/01-disable-aslr.conf
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt -y install libc6:i386 libstdc++6:i386 libncurses5:i386 zlib1g:i386
+sudo apt -y install binutils
+
 # Install Bless hex editor (for crypto lab)
 sudo apt -y install bless
 
