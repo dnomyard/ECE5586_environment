@@ -193,6 +193,9 @@ sudo dpkg --add-architecture i386
 sudo apt update
 sudo apt -y install libc6:i386 libstdc++6:i386 libncurses5:i386 zlib1g:i386
 sudo apt -y install binutils
+sudo apt -y install python2
+alias python="/usr/bin/python2.7"
+echo "alias python=/usr/bin/python2.7" >> ~/.bashrc
 
 # Install Bless hex editor (for crypto lab)
 sudo apt -y install bless
