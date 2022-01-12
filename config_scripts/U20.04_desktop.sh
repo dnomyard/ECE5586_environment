@@ -196,10 +196,20 @@ sudo apt -y install binutils
 sudo apt -y install python2
 alias python="/usr/bin/python2.7"
 echo "alias python=/usr/bin/python2.7" >> ~/.bashrc
-
 # Install Bless hex editor (for crypto lab)
 sudo apt -y install bless
-
+# Install nomacs image viewer (for crypto lab - latest Ristretto version is not compatible with .BMP files)
+sudo apt -y install nomacs
+sudo apt -y remove ristretto
+# Install wireshark (silent install; allow student account to access eth0)
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt -y install wireshark
+sudo groupadd wireshark
+sudo usermod -a -G wireshark student
+sudo chgrp wireshark /usr/bin/dumpcap
+sudo chmod 750 /usr/bin/dumpcap
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+sudo getcap /usr/bin/dumpcap
 # Create folders and place artifacts
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab1/buffer_oflow.tar -P /home/student/lab_files/lab1/
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab1/user_hashes.txt -P /home/student/lab_files/lab1/
