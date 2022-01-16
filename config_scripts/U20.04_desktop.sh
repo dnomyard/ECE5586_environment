@@ -198,6 +198,7 @@ alias python="/usr/bin/python2.7"
 echo "alias python=/usr/bin/python2.7" >> ~/.bashrc
 # Install Bless hex editor (for crypto lab)
 sudo apt -y install bless
+sudo apt -y install okteta
 # Install nomacs image viewer (for crypto lab - latest Ristretto version is not compatible with .BMP files)
 sudo apt -y install nomacs
 sudo apt -y remove ristretto
@@ -211,20 +212,20 @@ sudo chmod 750 /usr/bin/dumpcap
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
 sudo getcap /usr/bin/dumpcap
 # Create folders and place artifacts
-wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab1/buffer_oflow.tar -P /home/student/lab_files/lab1/
-wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab1/user_hashes.txt -P /home/student/lab_files/lab1/
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab1/buffer_oflow.tar -P /home/student/lab1/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab1/user_hashes.txt -P /home/student/lab1/
 sudo wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/default_firewall.sh -P /etc/
 sudo wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/extingui.sh -P /etc/
-wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/firewall.sh -P /home/student/lab_files/lab2/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/firewall.sh -P /home/student/lab2/
 sudo chmod +x /etc/default_firewall.sh
 sudo chmod +x /etc/extingui.sh
 chmod +x /home/student/lab_files/lab2/firewall.sh
 sudo cp /home/student/lab_files/lab2/firewall.sh /etc/
-wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/theft.pcap -P /home/student/lab_files/lab2/
-wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/illauth.pcap -P /home/student/lab_files/lab2/
-wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab3/shapes.bmp -P /home/student/lab_files/lab3/
-wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/plain.txt -P /home/student/lab_files/lab3/
-wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/test_message.txt -P /home/student/lab_files/lab3/
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/theft.pcap -P /home/student/lab2/
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/illauth.pcap -P /home/student/lab2/
+wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab3/shapes.bmp -P /home/student/lab3/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/plain.txt -P /home/student/lab3/
+wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab3/test_message.txt -P /home/student/lab3/
 
 #########################
 ## minor cleanup        #
