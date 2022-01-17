@@ -183,6 +183,8 @@ sudo chown -R www-data:www-data /var/www/html/base
 sudo chmod o-r /var/www/html/base/base_conf.php
 sudo service apache2 restart
 cd ~
+# Barnyard2 not always starting on system reboot. Bashrc entry will hopefully correct this
+echo "sudo service barnyard2 restart" >> ~/.bashrc
 # Software and config for password lab: John the Ripper
 sudo apt -y install john
 # Config for buffer overflow lab: disable ASLR; allow 32-bit program execution; install binutils (objdupm)
@@ -219,8 +221,8 @@ sudo wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/ar
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab2/firewall.sh -P /home/student/lab2/
 sudo chmod +x /etc/default_firewall.sh
 sudo chmod +x /etc/extingui.sh
-chmod +x /home/student/lab_files/lab2/firewall.sh
-sudo cp /home/student/lab_files/lab2/firewall.sh /etc/
+chmod +x /home/student/lab2/firewall.sh
+sudo cp /home/student/lab2/firewall.sh /etc/
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/theft.pcap -P /home/student/lab2/
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab2/illauth.pcap -P /home/student/lab2/
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab3/shapes.bmp -P /home/student/lab3/
@@ -232,6 +234,5 @@ wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifac
 cd ~
 sudo rm *.gz
 sudo rm *.sh
-
-
+history -c
 
