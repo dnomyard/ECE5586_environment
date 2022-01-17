@@ -213,6 +213,9 @@ sudo chgrp wireshark /usr/bin/dumpcap
 sudo chmod 750 /usr/bin/dumpcap
 sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
 sudo getcap /usr/bin/dumpcap
+# Update Chrome browser
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
 # Create folders and place artifacts
 wget https://github.com/dnomyard/ECE5586_environment/raw/main/artifacts/lab_files/lab1/buffer_oflow.tar -P /home/student/lab1/
 wget https://raw.githubusercontent.com/dnomyard/ECE5586_environment/main/artifacts/lab_files/lab1/user_hashes.txt -P /home/student/lab1/
