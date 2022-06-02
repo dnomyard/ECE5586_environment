@@ -1,6 +1,8 @@
-# Config scripts and artifacts for ECE5586 environment.
+# Config scripts and artifacts for Ubuntu w/Snort and Other Tools environment.
 
 ## Config Scripts
+
+This environment supports hands-on labs that are included in the Cyber Range courseware repository (and used in VT's ECE5586 course).
 
 Base environment is Ubuntu 20.04 Desktop and Ubuntu 20.04 Terminal (2021.8)
 
